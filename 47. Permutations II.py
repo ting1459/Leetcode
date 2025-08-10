@@ -7,30 +7,30 @@ class Solution:
         used = [False]*len(nums)
 
         def backtrack(path):
-            print("Calling backtrack with path:", path)  # fixed indentation here
+            print("step1:Calling backtrack with path:", path)  # fixed indentation here
             if len(path) == len(nums):
-                print("Base case reached with path:", path)
+                print("step2:Base case reached with path:", path)
                 result.append(path[:])
                 return 
         
 
             for i in range(len(nums)):
                 if used[i]:
-                    print(f"{nums[i],i} used, skip to next")
+                    print(f"step3.0:{nums[i],i} used, skip to next")
                     continue
                 if i > 0 and nums[i] == nums[i-1] and not used[i-1]:
-                    print("previous not used, skip to next i")
+                    print("step3.1:previous not used, skip to next i")
                     continue
                 
-                print(f"use {nums[i],i} ")
+                print(f"step4:use {nums[i],i} ")
                 used[i] = True
                 path.append(nums[i])
-                print(f"{path} appended")
+                print(f"step5:{path} appended")
                 backtrack(path)
-                print(f"out loop,path before: {path}")
+                print(f"step6.0:out loop,path before: {path}")
                 path.pop()
-                print(f"pop(),path after: {path}")
-                print(f"{nums[i],i} change to not used")
+                print(f"step6.1:pop(),path after: {path}")
+                print(f"step7:{nums[i],i} change to not used")
                 used[i] = False
             
         backtrack([])
